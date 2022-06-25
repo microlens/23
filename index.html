@@ -1,70 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-    <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <meta name="description" content="I'm 23" />
-    <meta name="keywords" content="23" />
-    <meta name="author" content="Long Nhat Nguyen" />
-    <meta property="og:title" content="23" />
-    <meta property="og:type" content="blog" />
-    <meta property="og:url" content="https://retro90s.github.io/23/" />
-    <meta property="og:image" content="img/poster.jpg" />
-    <title>23 | Long Nhat Nguyen</title>
-    <link rel="icon" href="img/favicon.ico" type="image/x-icon" />
-    <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet" />
-    <!-- Material Design Bootstrap -->
-    <link href="css/mdb.min.css" rel="stylesheet" />
-    <!-- Custom styles -->
-    <link rel="stylesheet" href="css/styles.css" />
-  </head>
 
-  <body>
-    <!--Main Navigation-->
-    <header>
-      <!--Intro Section-->
-      <section class="view intro-2">
-        <div class="mask rgba-gradient">
-          <div
-            class="container h-100 d-flex justify-content-center align-items-center"
-          >
-            <div class="card">
-              <div class="card-body">
-                <h2
-                  class="font-weight-bold my-4 text-center mb-5 mt-4 font-weight-bold"
-                >
-                  23
-                </h2>
-                <hr />
-                <video
-                  class="video-fluid z-depth-1"
-                  controls
-                  poster="img/poster.jpg"
-                >
-                  <source src="video/23.mp4" type="video/mp4" />
-                </video>
-              </div>
-            </div>
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <link href="static/img/favicon.ico" rel="shortcut icon" />
+  <title>I'm 23 | Long Nhat Nguyen</title>
+  <meta content="I'm 23 | Long Nhat Nguyen" property="og:title" />
+  <meta content="A video of Long Nhat Nguyen" name="description" property="og:description" />
+  <meta content="https://raw.githubusercontent.com/Retro90s/23/main/static/img/yottabyte.jpg" property="og:image" />
+  <meta content="https://retro90s.github.io/23/" property="og:url" />
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster" />
+  <link rel="stylesheet" href="static/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="static/css/style.css" />
+  <link rel="stylesheet" href="static/css/glightbox.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
+</head>
+
+<body>
+
+  <header class="main-header">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="header-inner">
+            <a class="logo" style="font-family: 'Lobster', cursive">Retro90s</a>
           </div>
         </div>
-      </section>
-      <!--Intro Section-->
-    </header>
-    <!--Main Navigation-->
+      </div>
+    </div>
+  </header>
 
-    <!--  SCRIPTS  -->
-    <!-- JQuery -->
-    <script type="text/javascript" src="js/jquery.min.js"></script>
-    <!-- Bootstrap tooltips -->
-    <script type="text/javascript" src="js/popper.min.js"></script>
-    <!-- Bootstrap core JavaScript -->
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
-    <!-- MDB core JavaScript -->
-    <script type="text/javascript" src="js/mdb.min.js"></script>
-  </body>
+  <div class="intro">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="lead">
+            <h1 style="font-family: 'Lobster', cursive">I'm 23</h1>
+            <p class="tagline">
+              A video of <strong>Long Nhat Nguyen</strong>
+            </p>
+          </div>
+
+          <ul class="box-container three-cols">
+            <li class="box">
+              <div class="inner">
+                <a href="./video/23.mp4" class="glightbox3">
+                  <img src="./static/img/yottabyte.jpg" alt="image" />
+                </a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <footer class="text-center">
+    <div class="wrap copyright">
+      made with love by
+      <a href="https://www.facebook.com/LongNhatNguyenOfficial" target="_blank">Long Nhat Nguyen</a>
+      | music by
+      <a href="https://martingarrix.com/" target="_blank">Martin Garrix</a>
+    </div>
+  </footer>
+
+  <script src="static/js/anime.min.js"></script>
+  <script src="static/js/valde.min.js"></script>
+  <script src="static/js/glightbox.min.js"></script>
+  <script src="static/js/site.js"></script>
+  <script>
+    var lightbox = GLightbox();
+    lightbox.on("open", (target) => {
+      console.log("lightbox opened");
+    });
+    var lightboxVideo = GLightbox({
+      selector: ".glightbox2",
+    });
+    var lightboxVideo = GLightbox({
+      selector: ".glightbox3",
+    });
+    lightboxVideo.on("slide_changed", ({ prev, current }) => {
+      console.log("Prev slide", prev);
+      console.log("Current slide", current);
+
+      const { slideIndex, slideNode, slideConfig, player } = current;
+
+      if (player) {
+        if (!player.ready) {
+          // If player is not ready
+          player.on("ready", (event) => {
+            // Do something when video is ready
+          });
+        }
+
+        player.on("play", (event) => {
+          console.log("Started play");
+        });
+
+        player.on("volumechange", (event) => {
+          console.log("Volume change");
+        });
+
+        player.on("ended", (event) => {
+          console.log("Video ended");
+        });
+      }
+    });
+  </script>
+</body>
+
 </html>
